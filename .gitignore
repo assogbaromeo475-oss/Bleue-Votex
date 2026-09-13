@@ -1,0 +1,5 @@
+node_modules/
+uploads/
+bleue-votex.db
+bleue-votex.db-shm
+bleue-votex.db-wal

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bleue Votex - Films, Séries et Animes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#" class="brand" data-view="home"><i class="fa-solid fa-bolt-lightning"></i> Bleue <span>Votex</span></a>
+            <nav class="desktop-nav" aria-label="Navigation principale">
+                <button class="nav-btn active" data-view="home">Accueil</button>
+                <button class="nav-btn" data-view="movies">Films</button>
+                <button class="nav-btn" data-view="series">Séries</button>
+                <button class="nav-btn" data-view="animes">Animes</button>
+                <button class="nav-btn" data-view="downloads"><i class="fa-solid fa-download"></i> Téléchargements <span id="downloadBadge" class="badge hidden">0</span></button>
+            </nav>
+            <div class="header-actions">
+                <label class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input id="searchInput" type="search" placeholder="Rechercher..." aria-label="Rechercher"></label>
+                <button id="settingsBtn" class="icon-btn" type="button" aria-label="Ouvrir les paramètres"><i class="fa-solid fa-gear"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="view-home" class="view-section">
+            <div class="hero"><div class="hero-copy"><span class="eyebrow">Bleue Votex Originals</span><h1>Films, séries et animes au même endroit.</h1><p>Explorez votre catalogue et regardez vos contenus préférés dans une interface simple et rapide.</p><div class="hero-actions"><button class="primary-btn" data-view="movies"><i class="fa-solid fa-film"></i> Explorer les films</button></div></div></div>
+            <section class="catalog-section public-library"><div class="section-heading"><div><h2><i class="fa-solid fa-globe"></i> Vidéos publiques</h2><p>Les vidéos ajoutées ici sont visibles sur ce site.</p></div><label for="publicVideoFile" class="primary-btn"><i class="fa-solid fa-upload"></i> Ajouter une vidéo</label><input id="publicVideoFile" type="file" accept="video/*" multiple></div><div id="publicVideoGrid" class="public-video-grid"><p class="empty-public-library">Aucune vidéo publique ajoutée pour le moment.</p></div></section>
+        </section>
+        <section id="view-movies" class="view-section hidden"><div class="page-heading"><div><span class="eyebrow">Catalogue</span><h1>Films</h1><p>Découvrez les films disponibles dans votre catalogue.</p></div><select id="genreFilter" aria-label="Filtrer par genre"><option value="all">Tous les genres</option><option value="Action">Action</option><option value="Sci-Fi">Sci-Fi</option><option value="Drame">Drame</option></select></div><div id="moviesGrid" class="media-grid"></div></section>
+        <section id="view-series" class="view-section hidden"><div class="page-heading"><div><span class="eyebrow">Catalogue</span><h1>Séries</h1><p>Retrouvez vos séries préférées.</p></div></div><div id="seriesGrid" class="media-grid"></div></section>
+        <section id="view-animes" class="view-section hidden"><div class="page-heading"><div><span class="eyebrow">Catalogue</span><h1>Animes</h1><p>Une sélection d'animations à découvrir.</p></div></div><div id="animesGrid" class="media-grid"></div></section>
+        <section id="view-downloads" class="view-section hidden"><div class="page-heading"><div><span class="eyebrow">Votre espace</span><h1>Téléchargements</h1><p>Suivez les téléchargements lancés depuis le catalogue.</p></div><button id="clearDownloads" class="secondary-btn" type="button"><i class="fa-solid fa-trash"></i> Tout effacer</button></div><div id="downloadsList" class="downloads-list"></div></section>
+        <section id="view-detail" class="view-section hidden"><button id="backBtn" class="secondary-btn" type="button"><i class="fa-solid fa-arrow-left"></i> Retour</button><div class="detail-layout"><video id="mainVideo" class="detail-video" controls></video><div class="detail-copy"><span id="detailGenre" class="eyebrow"></span><h1 id="detailTitle"></h1><p id="detailSynopsis"></p><button id="detailDownload" class="primary-btn" type="button"><i class="fa-solid fa-download"></i> Télécharger</button></div></div></section>
+    </main>
+
+    <footer><p><strong>Bleue Votex</strong> &copy; 2026 - Tous droits réservés.</p><p>Utilisez uniquement les contenus dont vous possédez les droits.</p></footer>
+
+    <div id="settingsModal" class="modal" hidden>
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+            <button id="closeSettings" class="close" type="button" aria-label="Fermer"><i class="fa-solid fa-xmark"></i></button>
+            <h2 id="settingsTitle">Paramètres</h2>
+            <div class="tabs" role="tablist">
+                <button class="tab-btn active" data-tab="about" role="tab" aria-selected="true">À propos</button>
+                <button class="tab-btn" data-tab="terms" role="tab" aria-selected="false">Conditions</button>
+                <button class="tab-btn" data-tab="privacy" role="tab" aria-selected="false">Confidentialité</button>
+                <button class="tab-btn" data-tab="private" role="tab" aria-selected="false">Bibliothèque privée</button>
+            </div>
+            <div id="about" class="tab-content active" role="tabpanel"><h3>À propos de Bleue Votex</h3><p>Une plateforme simple pour explorer et lire vos vidéos préférées.</p><p class="contact-info">Créé par ASSOGBA Y. Roméo<br>Tel : <a href="tel:+2290148999266">+229 01 48 99 92 66</a></p></div>
+            <div id="terms" class="tab-content" role="tabpanel" hidden><h3>Conditions d'utilisation</h3><p>Utilisez le site uniquement pour les vidéos dont vous avez les droits. Ne téléchargez aucun contenu protégé sans autorisation et respectez les lois en vigueur.</p></div>
+            <div id="privacy" class="tab-content" role="tabpanel" hidden><h3>Confidentialité</h3><p>Les vidéos publiques sont enregistrées sur le serveur. Les vidéos de la bibliothèque privée restent dans le stockage local de ce navigateur.</p></div>
+            <div id="private" class="tab-content" role="tabpanel" hidden>
+                <h3>Bibliothèque privée</h3>
+                <p class="private-note">Cet espace est réservé au propriétaire de ce navigateur.</p>
+                <div id="privateLogin"><label for="ownerPin">Code propriétaire</label><input id="ownerPin" type="password" inputmode="numeric" autocomplete="off" placeholder="Entrez votre code"><button id="privateAccessBtn" class="primary-btn" type="button">Déverrouiller</button></div>
+                <div id="privatePanel" class="hidden">
+                    <div class="private-upload"><label for="privateVideoFile" class="secondary-btn"><i class="fa-solid fa-folder-open"></i> Choisir une vidéo dans le stockage</label><input id="privateVideoFile" type="file" accept="video/*" multiple><p>Les vidéos sont enregistrées dans l’espace privé de ce navigateur.</p></div>
+                    <div class="private-storage-heading"><strong>Mon espace vidéo privé</strong><button id="clearPrivateVideos" class="remove-private" type="button"><i class="fa-solid fa-trash"></i> Tout supprimer</button></div>
+                    <form id="privateMediaForm" class="private-form"><label for="privateTitle">Titre</label><input id="privateTitle" required maxlength="100"><label for="privateType">Type</label><select id="privateType"><option value="movies">Film</option><option value="series">Série</option><option value="animes">Anime</option><option value="mangas">Manga</option></select><label for="privateUrl">Lien de lecture ou couverture</label><input id="privateUrl" type="url" placeholder="https://..."><button class="primary-btn" type="submit"><i class="fa-solid fa-plus"></i> Ajouter à ma bibliothèque</button></form>
+                    <div id="privateMediaList" class="private-media-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="toast" class="toast hidden" role="status"></div>
+    <script src="script.js"></script>
+</body>
+</html>
